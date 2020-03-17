@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @description :
  */
 @SpringBootTest
-public class StringControllerTest {
+public class Redis_String_Test {
 
     @Test
     public void demo1() {

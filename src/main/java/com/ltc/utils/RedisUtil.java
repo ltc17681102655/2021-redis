@@ -278,9 +278,42 @@ public class RedisUtil {
         return getInstance().opsForList().range(key, start, end);
     }
 
-    public static void setList(String k, List<Object> list, long time, TimeUnit timeUnit) {
-        getInstance().opsForList().rightPushAll(k, list);
+    //list相关操作
+
+    public static void listLeftPush(String k, List<Object> list, long time, TimeUnit timeUnit) {
+        getInstance().opsForList().leftPush(k, list);
         getInstance().expire(k, time, timeUnit);
+    }
+
+    public static void listLeftPush(String k, List<Object> list) {
+        getInstance().opsForList().leftPush(k, list);
+    }
+
+    public static void listLeftPop(String k, long time, TimeUnit timeUnit) {
+        getInstance().opsForList().leftPop(k, time, timeUnit);
+        getInstance().expire(k, time, timeUnit);
+    }
+
+    public static void listLeftPop(String k) {
+        getInstance().opsForList().leftPop(k);
+    }
+
+    public static void listRightPush(String k, List<Object> list, long time, TimeUnit timeUnit) {
+        getInstance().opsForList().rightPush(k, list);
+        getInstance().expire(k, time, timeUnit);
+    }
+
+    public static void listRightPush(String k, List<Object> list) {
+        getInstance().opsForList().rightPush(k, list);
+    }
+
+    public static void listRightPop(String k, long time, TimeUnit timeUnit) {
+        getInstance().opsForList().rightPop(k, time, timeUnit);
+        getInstance().expire(k, time, timeUnit);
+    }
+
+    public static void listRightPop(String k) {
+        getInstance().opsForList().rightPop(k);
     }
 
     /**
