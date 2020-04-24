@@ -16,16 +16,21 @@ import java.util.List;
 public class Redis_List_Test {
 
     private static List<Object> list;
+    private static List<Object> list2;
 
     static {
         list = Lists.newArrayList("北京", "上海", "广州", "深圳");
+        list2 = Lists.newArrayList("北京", "上海", "广州", "深圳");
     }
 
     //缓存
     @Test
     public void demo() {
-        String KEY = "发展四小龙";
-        RedisUtil.listLeftPush(KEY, list);
+        String KEY = "AKC456";
+//        RedisUtil.listLeftPush(KEY, list2);
+        RedisUtil.lPush(KEY, "A");
+        RedisUtil.lPush(KEY, "B");
+        RedisUtil.lPush(KEY, "A");
         System.out.println(RedisUtil.getList(KEY, List.class));
     }
 
